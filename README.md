@@ -1,2 +1,2 @@
 # leetcode
-Some interesting leetcode problems
+This repository contains solutions for leetcode problems which I found interesting to share.
