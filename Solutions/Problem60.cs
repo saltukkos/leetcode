@@ -2,6 +2,11 @@ using System;
 
 namespace Solutions
 {
+    /// <summary>
+    /// Permutation Sequence
+    /// https://leetcode.com/problems/permutation-sequence/
+    /// Solve it with O(n^2) complexity, which is almost constant in this case.
+    /// </summary>
     public static class Problem60
     {
         public static string GetPermutation(int length, int index)
