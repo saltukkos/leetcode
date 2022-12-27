@@ -6,7 +6,7 @@ namespace Solutions.Benchmarks
     {
         public static void Main()
         {
-            BenchmarkRunner.Run<Problem60Benchmarks>();
+            BenchmarkRunner.Run<Problem5Benchmarks>();
         }
     }
 }
