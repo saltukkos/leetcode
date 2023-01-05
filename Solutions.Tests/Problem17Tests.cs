@@ -1,32 +1,46 @@
+using System;
+using System.Collections.Generic;
 using NUnit.Framework;
 
 namespace Solutions.Tests
 {
-    [TestFixture]
-    public class Problem17Tests
+    [TestFixtureSource(nameof(FixtureArgs))]
+    public sealed class Problem17Tests
     {
+        private readonly Func<string, IList<string>> _testImplementation;
 
-        [TestCase("2", new [] {"a", "b", "c"})]
-        [TestCase("3", new [] {"d", "e", "f"})]
-        [TestCase("4", new [] {"g", "h", "i"})]
-        [TestCase("5", new [] {"j", "k", "l"})]
-        [TestCase("6", new [] {"m", "n", "o"})]
-        [TestCase("7", new [] {"p", "q", "r", "s"})]
-        [TestCase("8", new [] {"t", "u", "v"})]
-        [TestCase("9", new [] {"w", "x", "y", "z"})]
+        public Problem17Tests(Func<string, IList<string>> testImplementation)
+        {
+            _testImplementation = testImplementation;
+        }
+
+        public static object[] FixtureArgs =
+        {
+            Problem17.GetLetterCombinationsRecursive,
+            Problem17.GetLetterCombinationsNonRecursive
+        };
+
+        [TestCase("2", new[] {"a", "b", "c"})]
+        [TestCase("3", new[] {"d", "e", "f"})]
+        [TestCase("4", new[] {"g", "h", "i"})]
+        [TestCase("5", new[] {"j", "k", "l"})]
+        [TestCase("6", new[] {"m", "n", "o"})]
+        [TestCase("7", new[] {"p", "q", "r", "s"})]
+        [TestCase("8", new[] {"t", "u", "v"})]
+        [TestCase("9", new[] {"w", "x", "y", "z"})]
         public void GetLetterCombinations_OneButton_AllCharsFromThatButtonAreReturned(
             string digits,
             string[] expectedResult)
         {
-            var result = Problem17.GetLetterCombinations(digits);
+            var result = _testImplementation.Invoke(digits);
             Assert.That(result, Is.EquivalentTo(expectedResult));
         }
 
         [Test]
         public void GetLetterCombinations_ThreeButtons_AllCombinationsAreReturned()
         {
-            var result = Problem17.GetLetterCombinations("283");
-            Assert.That(result, Is.EquivalentTo(new []
+            var result = _testImplementation.Invoke("283");
+            Assert.That(result, Is.EquivalentTo(new[]
             {
                 "atd", "ate", "atf",
                 "aud", "aue", "auf",
@@ -43,8 +57,8 @@ namespace Solutions.Tests
         [Test]
         public void GetLetterCombinations_DuplicatedButton_AllCombinationsAreReturned()
         {
-            var result = Problem17.GetLetterCombinations("22");
-            Assert.That(result, Is.EquivalentTo(new []
+            var result = _testImplementation.Invoke("22");
+            Assert.That(result, Is.EquivalentTo(new[]
             {
                 "aa", "ab", "ac",
                 "ba", "bb", "bc",
