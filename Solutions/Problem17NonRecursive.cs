@@ -12,6 +12,11 @@ namespace Solutions
     {
         public static IList<string> GetLetterCombinationsNonRecursive(string digits)
         {
+            if (digits.Length == 0)
+            {
+                return Array.Empty<string>();
+            }
+
             var result = new List<string>();
 
             var buttonLetters = SelectLettersForButtons(digits);

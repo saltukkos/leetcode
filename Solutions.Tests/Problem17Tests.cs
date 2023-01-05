@@ -65,5 +65,12 @@ namespace Solutions.Tests
                 "ca", "cb", "cc",
             }));
         }
+        
+        [Test]
+        public void GetLetterCombinations_EmptyInput_ZeroArrayIsReturned()
+        {
+            var result = _testImplementation.Invoke("");
+            Assert.That(result, Is.Empty);
+        }
     }
 }

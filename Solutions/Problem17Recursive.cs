@@ -11,6 +11,11 @@ namespace Solutions
     {
         public static IList<string> GetLetterCombinationsRecursive(string digits)
         {
+            if (digits.Length == 0)
+            {
+                return Array.Empty<string>();
+            }
+
             var result = new List<string>();
             FillSubCombinations(digits.AsSpan(), string.Empty, result);
             return result;
