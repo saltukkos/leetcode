@@ -46,7 +46,7 @@ namespace Solutions.Tests
             var secondArray = new[] {3, 4};
 
             var result = Problem4.FindMedianOfSortedArrays(firstArray, secondArray);
-            Assert.That(result, Is.EqualTo(3));
+            Assert.That(result, Is.EqualTo(2.5));
         }
         
         private static class TestCaseDataProvider
